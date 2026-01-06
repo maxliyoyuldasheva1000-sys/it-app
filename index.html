@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>IT O‘rganamiz</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <h1>IT o‘rganamiz 🚀</h1>
+
+  <button type="button" onclick="dars()">📘 Dars</button>
+  <button type="button" onclick="test()">📝 Test</button>
+
+  <p id="natija"></p>
+
+  <hr>
+
+  <h2>🤖 AI Yordamchi</h2>
+  <input type="text" id="savol" placeholder="Savol yozing..."
+    style="padding:10px; width:80%; font-size:16px;">
+  <br><br>
+  <button type="button" onclick="aiJavob()">Savol ber</button>
+  <p id="aiNatija"></p>
+
+  <script>
+    let ball = 0;
+
+    function dars() {
+      document.getElementById("natija").innerText =
+        "HTML — web sahifa tuzilishini yaratish uchun ishlatiladi.";
+    }
+
+    function test() {
+      document.getElementById("natija").innerHTML =
+        "<h3>HTML nima uchun ishlatiladi?</h3>" +
+        "<button onclick='javob(true)'>Web sahifa yaratish</button> " +
+        "<button onclick='javob(false)'>O‘yin o‘ynash</button>";
+    }
+
+    function javob(togri) {
+      if (togri) {
+        ball++;
+        alert("✅ To‘g‘ri!");
+      } else {
+        alert("❌ Noto‘g‘ri");
+      }
+      document.getElementById("natija").innerHTML =
+        "Sizning ballingiz: " + ball;
+    }
+
+    function aiJavob() {
+      const savol = document.getElementById("savol").value.toLowerCase();
+      let javob = "Bu savol bo‘yicha hozircha ma’lumot yo‘q.";
+
+      if (savol.includes("html")) {
+        javob = "HTML — web sahifalar tuzilishini yaratish uchun ishlatiladi.";
+      } else if (savol.includes("css")) {
+        javob = "CSS — sahifaning dizayni va ko‘rinishini boshqaradi.";
+      } else if (savol.includes("js") || savol.includes("javascript")) {
+        javob = "JavaScript — sahifani interaktiv qilish uchun ishlatiladi.";
+      } else if (savol.includes("it")) {
+        javob = "IT — axborot texnologiyalari sohasi.";
+      }
+
+      document.getElementById("aiNatija").innerText = javob;
+    }
+  </script>
